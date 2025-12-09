@@ -1,0 +1,93 @@
+.owner-container {
+  padding: 40px 100px 120px;
+}
+
+.owner-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.owner-card {
+  display: flex;
+  gap: 16px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 14px;
+  align-items: center;
+}
+
+.owner-card-left {
+  width: 160px;
+  height: 110px;
+  flex: 0 0 160px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.owner-card-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.owner-card-center {
+  flex: 1 1 auto;
+}
+
+.owner-card-right {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.owner-card h4 {
+  margin: 0 0 6px 0;
+  color: #24355A;
+}
+
+.owner-meta p {
+  margin: 2px 0;
+  color: #444;
+  font-size: 14px;
+}
+
+.status-badge {
+  padding: 6px 10px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 13px;
+}
+.status-pending { background:#FCEBCF; color:#B36B00 }
+.status-confirmed { background:#E6F9EA; color:#1E8F3E }
+.status-rejected { background:#FDECEF; color:#B31E3E }
+
+.owner-actions {
+  display:flex;
+  gap:8px;
+}
+.btn-confirm {
+  background: #1e8f3e;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-reject {
+  background: #b31e3e;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .owner-card { flex-direction: column; align-items: stretch }
+  .owner-card-right { align-items: stretch; width: auto }
+  .owner-card-left { width: 100%; height: 180px }
+}

@@ -1,0 +1,97 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url("../../public/assests/login.jpg") center;
+  background-size: cover;
+}
+
+.login_content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 40%;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+}
+
+@media (max-width: 1024px) {
+  .login_content {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .login_content {
+    width: 80%;
+  }
+}
+
+.login_content_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.login_content_form input {
+  width: 100%;
+  padding: 7px 15px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  outline: none;
+  text-align: center;
+  color: white;
+}
+
+.login_content_form input:not(:placeholder-shown):focus {
+  background: transparent;
+}
+
+.login_content_form input::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+.login_content_form button {
+  margin-top: 15px;
+  width: 50%;
+  background-color: rgb(199, 133, 133);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(255, 255, 255);
+}
+
+.login_content_form button:hover {
+  box-shadow: 0 0 10px 3px rgba(255, 255, 255);
+}
+
+.login_content_google {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.login_content a {
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.login_content a:hover {
+  text-decoration: underline;
+}
+
+.login_content p {
+  color: white;
+  font-size: 13px;
+  text-align: center;
+}

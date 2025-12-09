@@ -1,0 +1,99 @@
+/* Container */
+.admin-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Title */
+.admin-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Table */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.admin-table thead th {
+  background: #2d6cdf; /* header background */
+  color: #ffffff; /* make header text white */
+  font-weight: 600;
+}
+
+.admin-table tr:nth-child(even) {
+  background: #f5f7fa;
+}
+
+/* Delete Button */
+.admin-table button {
+  padding: 6px 12px;
+  background: #e63946;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-table button:hover {
+  background: #c91828;
+}
+
+/* ---------------------- */
+/* Mobile Responsive View */
+/* ---------------------- */
+@media (max-width: 768px) {
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table tbody tr {
+    display: block;
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .admin-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 5px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .admin-table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  .admin-table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #555;
+  }
+}
+
+/* Buttons using admin theme */
+.btn { padding:8px 10px; border-radius:8px; border:none; cursor:pointer; font-weight:600 }
+.btn.small{ padding:6px 8px; font-size:13px }
+.btn.danger { background:#e63946; color:#fff }
+.btn.danger:hover { background:#c91828 }
+
+/* small search control */
+.admin-controls { margin: 12px 0 8px 0 }
+.admin-controls input { padding:8px 10px; border-radius:8px; border:1px solid rgba(0,0,0,0.08); width:260px }
+

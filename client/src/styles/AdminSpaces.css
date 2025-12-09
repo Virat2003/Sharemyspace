@@ -1,0 +1,53 @@
+/* Admin Spaces styles - responsive table and controls */
+.admin-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.admin-container h2 { text-align:left; margin-bottom:12px }
+
+.admin-controls { margin: 12px 0 8px 0 }
+.admin-controls input { padding:8px 10px; border-radius:8px; border:1px solid rgba(0,0,0,0.08); width:280px }
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.admin-table thead th {
+  background: #2d6cdf;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.admin-table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(15,23,42,0.03);
+}
+
+.admin-table tr:nth-child(even) td { background:#f8fafc }
+
+.admin-actions { display:flex; gap:8px; align-items:center }
+
+/* Buttons (reuse admin theme) */
+.btn { padding:8px 10px; border-radius:8px; border:none; cursor:pointer; font-weight:600 }
+.btn.small{ padding:6px 8px; font-size:13px }
+.btn.success { background:#1e8f3e; color:#fff }
+.btn.danger { background:#b31e3e; color:#fff }
+.btn.ghost { background:transparent; color:#24355A; border:1px solid rgba(36,53,90,0.08) }
+
+/* Responsive mobile view */
+@media (max-width: 768px) {
+  .admin-table thead { display: none }
+  .admin-table tbody tr { display: block; margin-bottom: 12px; background: #fff; border-radius: 8px; padding: 12px }
+  .admin-table tbody td { display: flex; justify-content: space-between; padding: 8px 6px; border-bottom: 1px solid #eee }
+  .admin-table tbody td::before { content: attr(data-label); font-weight:600; color:#555 }
+  .admin-actions { justify-content:flex-end }
+}

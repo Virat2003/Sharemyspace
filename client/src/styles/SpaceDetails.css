@@ -1,0 +1,190 @@
+/* ===== GENERAL ===== */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  color: #222;
+}
+
+.details-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ===== LEFT SIDE ===== */
+.details-left {
+  flex: 2;
+}
+
+.listing-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.listing-location {
+  color:black;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* GALLERY GRID */
+.listing-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.listing-gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.listing-gallery img:hover {
+  transform: scale(1.02);
+}
+
+/* HOST SECTION */
+.host-info {
+  display: flex;
+  align-items: center;
+  background: #f1f3f5;
+  padding: 15px;
+  border-radius: 12px;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.host-info img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.host-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.host-info p {
+  margin: 5px 0 0;
+  color: #555;
+}
+
+/* SECTION CONTENT */
+.listing-section {
+  margin-bottom: 25px;
+}
+
+.listing-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.listing-section p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ===== RIGHT SIDE ===== */
+.details-right {
+  flex: 1;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+
+.booking-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+}
+
+.booking-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.booking-card .price {
+  font-size: 1.5rem;
+  color: #0071eb;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.booking-card .price span {
+  color: #555;
+  font-size: 1rem;
+}
+
+.booking-summary {
+  background: #f8f9fb;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.booking-summary p {
+  margin: 5px 0;
+  color: #444;
+}
+
+.booking-summary .total {
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* BUTTON */
+.book-btn {
+  margin-top: 15px;
+  width: 100%;
+  background: #0071eb;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.book-btn:hover {
+  background: #005ac1;
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .details-container {
+    flex-direction: column;
+  }
+
+  .details-right {
+    position: static;
+  }
+
+  .listing-gallery img {
+    height: 200px;
+  }
+}
+
+.not-found {
+  text-align: center;
+  margin: 100px 0;
+  font-size: 1.3rem;
+  color: #444;
+}
+
+.bold{
+  font-weight: bold;
+}

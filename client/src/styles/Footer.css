@@ -1,0 +1,136 @@
+/* DARK GRADIENT FOOTER */
+.footer {
+  background: linear-gradient(135deg, #1a1a1d, #222831, #0f0f0f);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+  padding: 40px 70px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* RESPONSIVE PADDING */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 30px;
+  }
+}
+
+/* LEFT SECTION */
+.footer_left {
+  max-width: 350px;
+}
+
+.footer_left h2 {
+  color: #ff4b6b;
+  margin-bottom: 10px;
+}
+
+.footer_left p {
+  line-height: 1.5;
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* SOCIAL ICONS */
+.footer_left_socials {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.footer_left_socials_icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 75, 107, 0.2);
+  border: 1px solid rgba(255, 75, 107, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #ff4b6b;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.footer_left_socials_icon:hover {
+  background: #ff4b6b;
+  color: white;
+  transform: translateY(-5px) scale(1.1);
+}
+
+/* CENTER LINKS */
+.footer_center h3 {
+  margin-bottom: 10px;
+  color: #ff4b6b;
+}
+
+.footer_center ul {
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.footer_center ul a {
+  text-decoration: none;
+  color: #ddd;
+}
+
+.footer_center ul li {
+  margin-bottom: 10px;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.footer_center ul li:hover {
+  color: #ff4b6b;
+}
+
+/* HIDE CENTER ON SMALL DEVICES */
+@media (max-width: 768px) {
+  .footer_center {
+    display: none;
+  }
+}
+
+/* RIGHT SECTION */
+.footer_right h3 {
+  margin-bottom: 20px;
+  color: #ff4b6b;
+}
+
+.footer_right_info {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.footer_right_info p:first-child {
+  font-weight: bold;
+  min-width: 80px;
+  color: #ccc;
+}
+
+.footer_right_info p:last-child {
+  color: #ddd;
+}
+
+/* HIDE CONTACT ON VERY SMALL DEVICES */
+@media (max-width: 480px) {
+  .footer_right {
+    display: none;
+  }
+}
+
+/* COPYRIGHT BAR */
+.footer_bar {
+  background: #0d0d0d;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+  color: #bbb;
+  border-top: 1px solid #222;
+}
