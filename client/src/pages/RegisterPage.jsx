@@ -222,7 +222,12 @@ const RegisterPage = () => {
             {message && <p style={{ color: 'red' }}>{message}</p>}
             <button type="submit">Verify Account</button>
             <div style={{ marginTop: 12 }}>
-              <button type="button" onClick={handleResend} disabled={resendDisabled}>
+              <button
+                type="button"
+                className="resend-btn"
+                onClick={handleResend}
+                disabled={resendDisabled}
+              >
                 {resendDisabled ? `Resend in ${resendTimer}s` : 'Resend OTP'}
               </button>
             </div>

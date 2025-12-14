@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../redux/state';
 import { useNavigate } from 'react-router-dom';
+import '../styles/AdminLogin.css';
 
 // admin panel added
 const AdminLogin = () => {
@@ -35,14 +36,16 @@ const AdminLogin = () => {
   };
 
   return (
-    <div style={{ padding: 40 }}>
-      <h2>Admin Login</h2>
-      <form onSubmit={handleSubmit} style={{ maxWidth: 420 }}>
-        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">Login</button>
-      </form>
+    <div className="admin-login-root">
+      <div className="admin-login-card">
+        <h2 className="admin-login-title">Admin Login</h2>
+        <form className="admin-login-form" onSubmit={handleSubmit}>
+          <input className="admin-input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input className="admin-input" placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          {error && <p className="admin-error">{error}</p>}
+          <button className="btn primary" type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -52,7 +52,7 @@ const VerifyOtp = () => {
     <div className="login">
       <div className="login_content">
         <form className="login_content_form" onSubmit={handleVerify}>
-          <h3>Enter OTP</h3>
+          <h3 className='enterotp'>Enter OTP</h3>
           <input
             type="email"
             placeholder="Email"
@@ -70,7 +70,12 @@ const VerifyOtp = () => {
           {message && <p style={{ color: 'red' }}>{message}</p>}
           <button type="submit">Verify OTP</button>
           <div style={{ marginTop: 12 }}>
-            <button type="button" onClick={handleResend} disabled={resendDisabled}>
+            <button
+              type="button"
+              className="resend-btn"
+              onClick={handleResend}
+              disabled={resendDisabled}
+            >
               {resendDisabled ? `Resend in ${resendTimer}s` : 'Resend OTP'}
             </button>
           </div>

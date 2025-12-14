@@ -55,6 +55,16 @@
 .btn.success { background:var(--success); color:white }
 .btn.danger { background:var(--danger); color:white }
 
+/* Make logout button white on dark sidebar */
+.logout-btn {
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.12) !important;
+  background: transparent;
+}
+.logout-btn:hover {
+  background: rgba(255,255,255,0.06);
+}
+
 .small { padding:6px 8px; font-size:13px }
 
 /* Inputs */

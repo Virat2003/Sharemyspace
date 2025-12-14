@@ -95,3 +95,49 @@
   font-size: 13px;
   text-align: center;
 }
+
+/* Resend OTP button styles */
+.resend-btn {
+  /* margin-top: 8px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  /* padding: 8px 14px; */
+  /* padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: block; */ 
+
+ width: 50%;                /* same width as Verify OTP */
+  margin: 5px auto 15px;     /* center + spacing */
+  padding: 12px;             /* same padding */
+  background-color: rgb(199, 133, 133);
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(255, 255, 255);
+  text-align: center;
+  border: none;              /* match Verify button */
+
+
+}
+.resend-btn:hover:not(:disabled) {
+  border-color: #ffc4c4;
+  box-shadow: 0 0 8px rgba(255,196,196,0.12);
+  color: #ffdede;
+
+  
+  
+
+}
+.resend-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  border-color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.6);
+}
+
+
+.enterotp{
+  color: white;
+  margin-bottom: 20px;
+}

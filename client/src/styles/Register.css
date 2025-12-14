@@ -97,3 +97,27 @@
 .register_content a:hover {
   text-decoration: underline;
 }
+
+/* Resend OTP button styles */
+.resend-btn {
+  margin-top: 8px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.resend-btn:hover:not(:disabled) {
+  border-color: #ffc4c4;
+  box-shadow: 0 0 8px rgba(255,196,196,0.12);
+  color: #ffdede;
+}
+.resend-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  border-color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.6);
+  padding-right: 20px;
+}
