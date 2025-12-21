@@ -22,7 +22,7 @@ const AdminLogin = () => {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
-      if (!res.ok) return setError(data.message || 'Login failed');
+      if (!res.ok) return setError(String(data?.message || 'Login failed'));
 
       if (data.user.role !== 'admin') return setError('Admin access only');
 
@@ -31,7 +31,7 @@ const AdminLogin = () => {
       navigate('/admin/dashboard');
     } catch (err) {
       console.error(err);
-      setError('Server error');
+      setError(String(err?.message || 'Server error'));
     }
   };
 
@@ -42,7 +42,7 @@ const AdminLogin = () => {
         <form className="admin-login-form" onSubmit={handleSubmit}>
           <input className="admin-input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           <input className="admin-input" placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          {error && <p className="admin-error">{error}</p>}
+          {error && <p className="admin-error">{typeof error === 'string' ? error : JSON.stringify(error)}</p>}
           <button className="btn primary" type="submit">Login</button>
         </form>
       </div>

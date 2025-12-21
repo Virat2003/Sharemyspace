@@ -1,5 +1,7 @@
 import "../styles/Footer.css";
-import { LocationOn, LocalPhone, Email } from "@mui/icons-material"
+import LocationOn from '@mui/icons-material/LocationOn';
+import LocalPhone from '@mui/icons-material/LocalPhone';
+import Email from '@mui/icons-material/Email';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 
@@ -30,9 +32,9 @@ const Footer = () => {
           <h3>About</h3>
           <ul>
             <a href="/"><li>Home</li></a>
-            <a href="/about"><li>About Us</li></a>
-            <a href="/spaces"><li>Spaces</li></a>
-            <a href="/how-it-works"><li>How It Works</li></a>
+            <a href="#about"><li>About Us</li></a>
+            {/* <a href="/spaces"><li>Spaces</li></a> */}
+            <a href="/#"><li>How It Works</li></a>
             <a href="/contact"><li>Contact</li></a>
           </ul>
         </div>

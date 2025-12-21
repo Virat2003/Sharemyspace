@@ -30,7 +30,7 @@ export const categories = [
   },
   {
     img: "assests/modern_cat.webp",
-    label: "Offices/Meeting Rooms",
+    label: "Offices Rooms",
     icon: <BsPersonWorkspace />,
     description: "Book workspaces or meeting areas",
   },

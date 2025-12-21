@@ -1,0 +1,143 @@
+.contact-page {
+  min-height: 100vh;
+  background-color: #f4f6f8;
+  padding: 40px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.contact-container {
+  max-width: 1100px;
+  margin: auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+.contact-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-header h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.contact-header p {
+  color: #666;
+}
+
+/* Layout */
+.contact-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Contact Info */
+.contact-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.contact-info h2 {
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.contact-info p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Form */
+.contact-form {
+  flex: 1;
+  min-width: 280px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #2ecc71;
+}
+
+/* Button */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #2ecc71;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #27ae60;
+}
+
+/* Feedback messages */
+.form-success {
+  margin-top: 12px;
+  color: #116530;
+  background: #e6fbef;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+.form-error {
+  margin-top: 12px;
+  color: #8a1f1f;
+  background: #fdecea;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+.form-preview {
+  margin-top: 8px;
+  font-size: 13px;
+}
+.form-preview a {
+  color: #2b7de9;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 25px;
+  }
+
+  .contact-content {
+    flex-direction: column;
+  }
+}

@@ -34,8 +34,13 @@
 .login_content_form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 15px;
+}
+
+.login_content_form h3{
+  color: white;
+  text-align: center;
 }
 
 .login_content_form input {
@@ -59,7 +64,8 @@
 }
 
 .login_content_form button {
-  margin-top: 15px;
+  display: block;
+  margin: 15px auto 0;
   width: 50%;
   background-color: rgb(199, 133, 133);
   padding: 12px;
@@ -141,3 +147,4 @@
   color: white;
   margin-bottom: 20px;
 }
+

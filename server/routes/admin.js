@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 // admin panel added
 const verifyToken = require('../middleware/verifyToken');
 const verifyAdmin = require('../middleware/verifyAdmin');

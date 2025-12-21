@@ -37,34 +37,41 @@ router.post("/register", upload.single("profileImage"), async (req, res) => {
     /* path to the uploaded profile photo */
     const profileImagePath = profileImage.path;
 
-    /* Check if user exists */
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(409).json({ message: "User already exists!" });
-    }
+    /* Check if definitive user exists */
+    let existingUser = await User.findOne({ email }).select('+otp +otpExpiry +otpRequestedAt +isVerified');
 
     /* Hash the password */
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    /* Create a new User (unverified) */
-    const newUser = new User({
-      firstName,
-      lastName,
-      email,
-      password: hashedPassword,
-      profileImagePath,
-      isVerified: false,
-    });
-
-    /* Save the new User */
-    await newUser.save();
+    let user;
+    if (existingUser) {
+      if (existingUser.isVerified) {
+        return res.status(409).json({ message: "User already exists!" });
+      }
+      // update unverified user with latest data
+      existingUser.firstName = firstName;
+      existingUser.lastName = lastName;
+      existingUser.password = hashedPassword;
+      existingUser.profileImagePath = profileImagePath;
+      user = existingUser;
+    } else {
+      user = new User({
+        firstName,
+        lastName,
+        email,
+        password: hashedPassword,
+        profileImagePath,
+        isVerified: false
+      });
+    }
 
     /* Generate OTP and store hashed value with expiry (5 minutes) */
     const { otp, hashed } = await generateOtp();
-    newUser.otp = hashed;
-    newUser.otpExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes
-    await newUser.save();
+    user.otp = hashed;
+    user.otpExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes
+    user.otpRequestedAt = Date.now();
+    await user.save();
 
     /* Send OTP to user's email */
     const message = `Your verification code is: ${otp}. It expires in 5 minutes.`;
@@ -72,12 +79,11 @@ router.post("/register", upload.single("profileImage"), async (req, res) => {
       await sendEmail(email, "Your account verification code", message);
     } catch (emailErr) {
       console.error('Failed to send OTP email:', emailErr);
-      // don't reveal internals to client
     }
 
     /* Respond without sensitive fields */
-    const { password: pwd, otp: _otp, ...userWithoutSensitive } = newUser._doc;
-    res.status(200).json({ message: "User registered. OTP sent to email.", user: userWithoutSensitive });
+    const { password: pwd, otp: _otp, ...userWithoutSensitive } = user._doc;
+    res.status(200).json({ message: "Registration pending. OTP sent to email.", user: userWithoutSensitive });
   } catch (err) {
     console.log(err);
     res
@@ -91,8 +97,7 @@ router.post('/verify-otp', async (req, res) => {
   try {
     const { email, otp } = req.body;
     if (!email || !otp) return res.status(400).json({ message: 'Email and OTP are required.' });
-
-    // need to select otp explicitly because it's select:false
+    // operate on User model only
     const user = await User.findOne({ email }).select('+otp +otpExpiry +isVerified');
     if (!user) return res.status(404).json({ message: 'User not found.' });
 
@@ -110,6 +115,7 @@ router.post('/verify-otp', async (req, res) => {
     user.isVerified = true;
     user.otp = null;
     user.otpExpiry = null;
+    user.otpRequestedAt = null;
     await user.save();
 
     return res.status(200).json({ message: 'Account verified successfully.' });
@@ -125,7 +131,8 @@ router.post('/resend-otp', async (req, res) => {
     const { email } = req.body;
     if (!email) return res.status(400).json({ message: 'Email is required.' });
 
-    const user = await User.findOne({ email }).select('+otpRequestedAt +isVerified');
+    // find user and check status
+    const user = await User.findOne({ email }).select('+otpRequestedAt +isVerified +otp +otpExpiry');
     if (!user) return res.status(404).json({ message: 'User not found.' });
 
     if (user.isVerified) return res.status(400).json({ message: 'Account already verified.' });

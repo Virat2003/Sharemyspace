@@ -8,7 +8,6 @@ import SpaceDetails from "./pages/SpaceDetails";
 import Bookinglist from "./pages/Bookinglist";
 import PropertyList from "./pages/PropertyList";
 import OwnerDashboard from "./pages/OwnerDashboard";
-import { Category } from "@mui/icons-material";
 import Categorypage from "./pages/Categorypage";
 import Searchpage from "./pages/Searchpage";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -20,11 +19,13 @@ import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminSpaces from "./pages/admin/AdminSpaces";
 import AdminBookings from "./pages/admin/AdminBookings";
+import Contact from "./pages/Contact";
+
 
 function App() {
   return (
     <div >
-            <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -46,6 +47,7 @@ function App() {
             <Route path="spaces" element={<AdminSpaces />} />
             <Route path="bookings" element={<AdminBookings />} />
           </Route>
+          <Route path="/contact" element={<Contact />} />
 
 
           </Routes>

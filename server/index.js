@@ -9,6 +9,7 @@ const authRoutes = require("./routes/auth.js")
 const ListingRoutes= require("./routes/listing.js")
 const BookingRoutes = require("./routes/booking.js")
 const AdminRoutes = require("./routes/admin.js")
+const ContactRoutes = require("./routes/contact.js")
 
 app.use(cors());
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use(express.static("public"));
 app.use("/bookings",BookingRoutes)
 app.use("/users", userRoutes)
 app.use("/admin", AdminRoutes)
+app.use("/contact", ContactRoutes)
 
 /* ROUTES */
 app.use("/auth", authRoutes)

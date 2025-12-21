@@ -19,10 +19,12 @@ const VerifyOtp = () => {
     setMessage('');
     try {
       const res = await axios.post('http://localhost:3001/auth/verify-reset-otp', { email, otp });
-      setMessage(res.data.message || 'OTP verified');
-      navigate('/reset-password', { state: { email } });
+      const successMsg = res.data.message || 'OTP verified';
+      setMessage(successMsg);
+      navigate('/reset-password', { state: { email, message: 'OTP verified successfully' } });
     } catch (err) {
-      setMessage(err.response?.data?.message || 'Verification failed');
+      const errMsg = err.response?.data?.message || 'Verification failed';
+      setMessage(errMsg);
     }
   };
 

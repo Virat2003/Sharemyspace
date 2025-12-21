@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
@@ -7,6 +7,16 @@ const ResetPassword = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const emailFromState = location.state?.email || '';
+  const successFromNav = location.state?.message || '';
+  const [transientMessage, setTransientMessage] = useState(successFromNav || '');
+
+  useEffect(() => {
+    setTransientMessage(successFromNav || '');
+    if (successFromNav) {
+      const t = setTimeout(() => setTransientMessage(''), 2500);
+      return () => clearTimeout(t);
+    }
+  }, [successFromNav]);
 
   const [email, setEmail] = useState(emailFromState);
   const [newPassword, setNewPassword] = useState('');
@@ -59,6 +69,7 @@ const ResetPassword = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+          {transientMessage && <p style={{ color: 'green' }}>{transientMessage}</p>}
           {message && <p style={{ color: 'red' }}>{message}</p>}
           <button type="submit" disabled={loading}>{loading ? 'Updating...' : 'Reset Password'}</button>
         </form>

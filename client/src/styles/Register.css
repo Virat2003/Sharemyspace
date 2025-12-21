@@ -36,6 +36,12 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+
+}
+
+.register_content_form h3{
+  color: white;
+  text-align: center;
 }
 
 .register_content_form input {
@@ -73,13 +79,28 @@
   width: 25px;
 }
 
+/* Preview image shown after user selects a profile image */
+.preview-image {
+  display: block;
+  margin: 8px auto 0;
+  max-width: 80px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
 .register_content_form button {
-  margin-top: 15px;
+  display: block;
+  margin: 15px auto 0;
   width: 50%;
   background-color: rgb(199, 133, 133);
-  padding: 12px;
+  padding: 14px 18px;
   border-radius: 8px;
   box-shadow: 0 2px 2px rgba(255, 255, 255);
+  border: none;
+  text-align: center;
 }
 
 .register_content_form button:hover {
@@ -100,24 +121,26 @@
 
 /* Resend OTP button styles */
 .resend-btn {
-  margin-top: 8px;
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 8px 14px;
-  border-radius: 6px;
+  width: 50%;                /* match primary button width */
+  margin: 8px auto 15px;     /* center + spacing */
+  padding: 14px 18px;        /* match primary button padding */
+  background-color: rgb(199, 133, 133);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(255, 255, 255);
+  border: none;
   cursor: pointer;
   transition: all 0.18s ease;
+  text-align: center;
 }
 .resend-btn:hover:not(:disabled) {
-  border-color: #ffc4c4;
-  box-shadow: 0 0 8px rgba(255,196,196,0.12);
-  color: #ffdede;
+  box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
 }
 .resend-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-  border-color: rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.6);
-  padding-right: 20px;
+  color: rgba(255,255,255,0.8);
 }
+
+

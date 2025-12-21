@@ -99,11 +99,14 @@ const RegisterPage = () => {
         otp: otpValue
       });
       if (res.status === 200) {
-        navigate('/login');
+        const successText = 'OTP verified successfully';
+        setMessage(successText);
+        navigate('/login', { state: { message: successText } });
       }
     } catch (err) {
       console.error(err);
-      setMessage(err.response?.data?.message || 'Verification failed');
+      const errMsg = err.response?.data?.message || 'Verification failed';
+      setMessage(errMsg);
     }
   };
 
@@ -198,7 +201,7 @@ const RegisterPage = () => {
             <img
               src={URL.createObjectURL(formData.profileImage)}
               alt="profile photo"
-              style={{ maxWidth: "80px" }}
+              className="preview-image"
             />
           )}
 

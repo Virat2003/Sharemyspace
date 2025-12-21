@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Login.css";
 import { setLogin } from "../redux/state";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 const LoginPage = () => {
@@ -12,6 +12,17 @@ const LoginPage = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const successFromNav = location.state?.message || "";
+  const [transientMessage, setTransientMessage] = useState(successFromNav || '');
+
+  useEffect(() => {
+    setTransientMessage(successFromNav || '');
+    if (successFromNav) {
+      const t = setTimeout(() => setTransientMessage(''), 2500);
+      return () => clearTimeout(t);
+    }
+  }, [successFromNav]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,8 +40,8 @@ const LoginPage = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        // Show backend error message
-        setError(data.message || "Login failed");
+        // Show backend error message (coerce to string to avoid rendering issues)
+        setError(String(data?.message || "Login failed"));
         return;
       }
 
@@ -48,7 +59,7 @@ const LoginPage = () => {
       navigate("/");
 
     } catch (err) {
-      setError("Server error, please try again.");
+      setError(String(err?.message || "Server error, please try again."));
       console.error("Login failed:", err);
     }
   };
@@ -72,7 +83,8 @@ const LoginPage = () => {
             required
           />
 
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {transientMessage && <p style={{ color: "green" }}>{transientMessage}</p>}
+          {error && <p style={{ color: "red" }}>{typeof error === 'string' ? error : JSON.stringify(error)}</p>}
 
           <button type="submit">LOG IN</button>
         </form>

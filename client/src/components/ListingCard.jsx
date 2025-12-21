@@ -1,6 +1,7 @@
-import { ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import ArrowBackIosNew from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/ListingCard.css";
 import Footer from "./Footer";
 
@@ -36,9 +37,29 @@ const ListingCard = ({
 
   // support both prop names: `_id` (preferred) or `listingId` (legacy)
   const id = _id || listingId;
+  const navigate = useNavigate();
+  // const ignoreNavRef = useRef(false);
+
+  const handleCardClick = (e) => {
+    // debug: log click target and whether it's inside slider
+    try {
+      const insideSlider = !!(e?.target && e.target.closest && e.target.closest('.slider-container'));
+      // eslint-disable-next-line no-console
+      console.debug('ListingCard click:', { target: e?.target, insideSlider });
+      if (insideSlider) return;
+    } catch (err) {
+      // ignore
+    }
+    // if (ignoreNavRef.current) {
+    //   // reset flag and do not navigate
+    //   ignoreNavRef.current = false;
+    //   return;
+    // }
+    navigate(`/properties/${id}`);
+  };
 
   return (
-    <Link to={`/properties/${id}`} style={{ textDecoration: "none", color: "inherit" }}>
+    <div onClick={handleCardClick} style={{ textDecoration: "none", color: "inherit", cursor: 'pointer' }}>
       <div className="listing-card">
         <div className="slider-container">
           <div
@@ -46,16 +67,35 @@ const ListingCard = ({
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {listingPhotoPaths?.map((photo, index) => (
-              <div key={index} className="slide">
+              <div
+                key={index}
+                className="slide"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  // ignoreNavRef.current = true;
+                  goToNextSlide();
+                }}
+              >
                 <img
                   src={`http://localhost:3001/${photo.replace("public", "")}`}
                   alt={`photo ${index + 1}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // e.stopPropagation();
+                    // ignoreNavRef.current = true;
+                    // goToNextSlide();
+                    navigate(`/properties/${id}`);
+                  }}
+                  style={{ cursor: 'pointer' }}
                 />
                 <div
                   className="prev-button"
                   onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
-                    goToPrevSlide(e);
+                    // ignoreNavRef.current = true;
+                    goToPrevSlide();
                   }}
                 >
                   <ArrowBackIosNew sx={{ fontSize: "15px" }} />
@@ -63,8 +103,10 @@ const ListingCard = ({
                 <div
                   className="next-button"
                   onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
-                    goToNextSlide(e);
+                    // ignoreNavRef.current = true;
+                    goToNextSlide();
                   }}
                 >
                   <ArrowForwardIos sx={{ fontSize: "15px" }} />
@@ -106,7 +148,7 @@ const ListingCard = ({
           </>
         )}
       </div>
-    </Link>
+    </div>
   );
 };
 

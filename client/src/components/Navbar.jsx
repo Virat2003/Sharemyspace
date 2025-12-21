@@ -1,4 +1,6 @@
-import { Menu, Person, Search } from "@mui/icons-material";
+import Menu from '@mui/icons-material/Menu';
+import Person from '@mui/icons-material/Person';
+import Search from '@mui/icons-material/Search';
 import { IconButton } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
